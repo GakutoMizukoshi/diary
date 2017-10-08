@@ -3,7 +3,9 @@
     <div class="cover-inner">
       <div class="cover-contents">
         <h1>本当の気持ちをこの場所で</h1>
-        <a href="" class="btn btn-default btn-lg">交換日記を始める</a>
+        <% unless logged_in? %>
+         <%= link_to "交換日記を始める", signup_path, class: "btn btn-default btn-lg" %>
+        <% end %> 
       </div>
     </div>
   </div>
