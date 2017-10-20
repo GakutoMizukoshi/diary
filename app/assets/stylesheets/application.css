@@ -17,19 +17,18 @@
 
 /* body */
 body {
-  background: #f2f2f2;
+  background: beige;
+  
 }
 footer {
   margin-top: 40px;
+  margin-bottom: 40px;
 }
 
 /* navbar */
 .navbar {
-  background-color: white;
-}
-.navbar-header img {
-  margin-top: 5px;
-  height: 40px;
+  background-color: #393029;
+  border-color: #392929;
 }
 
 /* cover */
@@ -37,7 +36,7 @@ footer {
   margin-top: -20px;
   margin-bottom: 20px;
   width: 100%;
-  height: 400px;
+  height: 500px;
   background: url("/images/wallpaper-book-photo-03.jpg") center center no-repeat;
   background-size: cover;
 }
@@ -58,4 +57,33 @@ footer {
   font-weight: bold;
   letter-spacing: 0.15em;
   opacity: 0.7;
+}
+
+
+#follow {
+  padding-top: 10px;
+  padding-bottom: 100px;
+}
+
+#desk {
+  padding-top: 10px;
+  padding-bottom: 100px;
+}
+
+.link {
+  color: black;
+}
+
+#icon {
+  font-size: 60px;
+  padding-top: 50px;
+}
+
+#followings_followers {
+  padding-top: 50px;
+  padding-bottom: 100px;
+}
+
+.user {
+  padding-bottom: 50px;
 }

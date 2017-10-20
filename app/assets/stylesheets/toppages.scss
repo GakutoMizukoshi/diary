@@ -2,6 +2,20 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .cover-contents .btn {
-  margin-top: 50px;
+  margin-top: 100px;
   background-color:rgba(255,255,255,0.5);
+}
+
+.top-wrapper h2 {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.top-wrapper h3 {
+  padding-bottom: 50px;
+}
+
+#start {
+  padding-top:100px;
+  padding-bottom: 150px;
 }

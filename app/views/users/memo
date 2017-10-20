@@ -1,0 +1,11 @@
+<div class="media-left">
+        <img class="media-object img-rounded" src="<%= gravatar_url(user, options = { size: 50 }) %>" alt="">
+      </div>
+      <div class="media-body">
+        <div>
+          <%= link_to user.name, user_path(user) %> <span class="text-muted">posted at <%= diary.created_at %></span>
+        </div>
+        <div>
+          <p><%= diary.content %></p>
+        </div>
+      </div>

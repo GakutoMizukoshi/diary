@@ -3,6 +3,47 @@
     <img src="<%= gravatar_url(@user, size: 100) %>" alt="" class="img-circle">
   </div>
   <div class="name text-center">
-    <h1><%= @user.name %></h1>
+    <h2><%= @user.name %></h2>
   </div>
+  <% if current_user.id == @user.id %>
+    <div class="text-center" id="edit">
+      <%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-grey700_rsd"%>
+    </div>
+    <div class="text-center" id="follow">
+      <%= link_to "フォロー", followings_user_path(@user), class: "btn btn-grey100_rsd"%>
+      <%= link_to "フォロワー", followers_user_path(@user), class: "btn btn-grey100_rsd"%>  
+    </div>
+    
+    <div class="text-center">
+      <span class="glyphicon glyphicon-book" aria-hidden="true" id="icon"></span>
+      <h3>
+        交換日記ができる相手
+      </h3>
+    </div>
+    <div class="text-center" id="followings_followers">
+      <%= render 'users', users: @followings_followers %>
+    </div>
+  <% end %>
+  <div class="text-center">
+    <%= render 'relationships/follow_button', user: @user %>
+  </div>
+  
+  <% if current_user.id != @user.id && current_user.following?(@user) && current_user.follower?(@user)%>
+    <div class="text-center" id="desk">
+      <% if @diaries.blank? || @last_diary && @last_diary.user_id != current_user.id %>
+        <%= link_to new_diary_path(send_id: @user.id), class: 'btn btn-brown200_rsd' do %>
+          <i class='glyphicon glyphicon-pencil'></i> 日記を書く
+        <% end %>
+      <% else %>
+        <div class='btn btn-grey100_rsd'>返信待ち...</div>
+      <% end %>
+      <%= link_to diaries_user_path(@user), class: 'btn btn-brown700_rsd' do %>
+        <i class='glyphicon glyphicon-book'></i> 交換日記を見る
+      <% end %>
+    </div>
+  <% end %>
 </div>
+
+  
+  
+

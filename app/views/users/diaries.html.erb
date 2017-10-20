@@ -1,0 +1,71 @@
+<div id="magazine">
+  <div class="hard"> 
+    <h1>Secret Diary</h1> 
+  </div>
+  <div class="hard"></div>
+  <div class="text-center">
+    <h2>交換日記へようこそ！</h2>
+    <h4>
+      <br>
+      交換日記は一方的な投稿はできません！<br>
+      必ず相手の反応があってこその交換日記です。<br>
+      <br>
+      普段話しづらいことや、悩みを話すのも良し、<br>
+      今日あったことを話すのも良し、<br>
+      明日のことを話すのも良しです！<br>
+      <br>
+      使い方は自由です！<br>
+      <br>
+      是非上手に活用してください！<br>
+      <br>
+      ページをめくって書いた日記を見てみよう。<br>
+    </h4>
+  </div>
+  <% @diaries.each do |diary| %>
+    <% user = User.find(diary.user_id) %>
+    <div>
+      <h5>
+      	<img class="img-rounded" src="<%= gravatar_url(user, options = { size: 50 }) %>" alt=""><br>
+      	<%= link_to user.name, user_path(user) %><br>
+      	<span class="text-muted">日記更新日 <%= diary.created_at %></span>
+      </h5>
+      <h4>
+        <%= diary.content %>
+      </h4>  
+    </div>	
+  <% end %>
+	<div class="text-center" id="end">
+	  <h4>
+	    今日もお疲れさまでした。<br>
+	    明日もいい日になりますように...
+	  </h4>
+	</div>
+  <div class="hard"></div>
+</div>
+
+<script type="text/javascript">
+	$(function() {
+		$('#magazine').turn({
+							display: 'double',
+							acceleration: true,
+							gradients: !$.isTouch,
+							elevation:50,
+							when: {
+								turned: function(e, page) {
+									/*console.log('Current view: ', $(this).turn('view'));*/
+								}
+							},
+							turnCorners: "tl,tr"
+						});
+	});
+	
+	
+	$(window).bind('keydown', function(e){
+		
+		if (e.keyCode==37)
+			$('#magazine').turn('previous');
+		else if (e.keyCode==39)
+			$('#magazine').turn('next');
+			
+	});
+</script>

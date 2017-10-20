@@ -9,4 +9,21 @@
       </div>
     </div>
   </div>
+  <div class="top-wrapper">
+    <div class="container text-center">
+      <h2>CONCEPT...</h2>
+      <h3>いつも話せないことを交換日記で話そう。</h3>
+      <p>近年SNSが大きく普及し、世界中の人と繋がることが出来る時代になりました。</p>
+      <p>しかしこの様な便利な時代だからこそ、大切な人に本当の気持ちを伝えづらくなってしまったのではないでしょうか。</p>
+      <p>この場所は、そんな大切な人と普段話せない話が出来る場所として是非活用して欲しいと思います。</p>
+    </div>
+  </div>
+  <div class="container" id="start">
+    <div class="text-center">
+      <h3>さっそく始めよう！</h3>
+      <% unless logged_in? %>
+        <%= link_to "交換日記を始める", signup_path, class: "btn btn-brown900_rsd btn-lg" %>
+      <% end %>  
+    </div>
+  </div>
 <% end %>

@@ -1,0 +1,21 @@
+<% if users.any? %>
+  <div>
+    <% users.each do |user| %>
+      <div>
+        <div class="col-md-3 col-sm-4 col-xs-12">
+          <div>
+            <div>
+              <img class="img-rounded" src="<%= gravatar_url(user, { size: 50 }) %>" alt="">
+            </div>
+            <div>
+              <div class="user">
+                <%= link_to(user.name, user_path(user), class: "link") %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <%= paginate users %>
+<% end %>
