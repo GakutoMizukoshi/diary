@@ -1,5 +1,5 @@
 class DiariesController < ApplicationController
-  before_action :debug_params
+  before_action :require_user_logged_in, only: [:new, :create]
   def new
     @diary = Diary.new
   end
