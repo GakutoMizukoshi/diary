@@ -1,5 +1,6 @@
 class DiariesController < ApplicationController
   before_action :require_user_logged_in
+  
   def new
     @diary = Diary.new
   end
@@ -13,7 +14,7 @@ class DiariesController < ApplicationController
     else
       @diaries = current_user.diaries.order('created_at DESC').page(params[:page])
       flash.now[:warning] = '日記の更新に失敗しました。'
-      render 'users/show'
+      render :new
     end
   end
   

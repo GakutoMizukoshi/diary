@@ -72,4 +72,13 @@ class UsersController < ApplicationController
   def the_two_diaries(sender, receiver)
     sender.diaries.where(send_id: receiver.id) + receiver.diaries.where(send_id: sender.id).order('created_at DESC').page(params[:page])
   end
+  
+  def correct_user
+    user = User.find(params[:id])
+    @user = current_user.id == user.id
+    unless @user
+      redirect_to @user
+    end
+  end
+
 end

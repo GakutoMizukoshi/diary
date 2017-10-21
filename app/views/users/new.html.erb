@@ -4,6 +4,7 @@
       <div class="panel-heading">会員登録</div>
       <div class="panel-body">
         <%= form_for(@user) do |f| %>
+        <%= render 'layouts/error_messages', model: f.object %>
           <div class="form-group">
             <%= f.label :name, 'お名前' %>
             <%= f.text_field :name, class: 'form-control' %>

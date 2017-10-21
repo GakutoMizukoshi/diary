@@ -4,6 +4,7 @@
       <div class="panel-heading">交換日記を書く</div>
       <div class="panel-body">
         <%= form_for(@diary) do |f| %>
+        <%= render 'layouts/error_messages', model: f.object %>
           <%= hidden_field_tag :send_id, params[:send_id] %>
           <div class="form-group">
             <%= f.label :content, '日記' %>
