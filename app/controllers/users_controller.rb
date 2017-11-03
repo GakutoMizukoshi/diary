@@ -12,8 +12,8 @@ class UsersController < ApplicationController
     @followers = @user.followers.page(params[:page])
     p followings_followers_ids = @user.followings.pluck(:id) + @user.followers.pluck(:id).group_by{|i| i}.reject{|k,v| v.one?}.keys
     @followings_followers = User.where(id: followings_followers_ids).page(params[:page])
-    @last_diary = Diary.where(id: the_two_diaries(current_user, @user).pluck(:id)).order('updated_at DESC').first
-    @diaries = Diary.where(id: the_two_diaries(current_user, @user).pluck(:id)).order('created_at DESC')
+    @last_diary = Diary.where(id: the_two_diaries(current_user, @user).pluck(:id)).order('updated_at ASC').first
+    @diaries = Diary.where(id: the_two_diaries(current_user, @user).pluck(:id)).order('created_at ASC')
   end
 
   def new
@@ -60,7 +60,7 @@ class UsersController < ApplicationController
   
   def diaries
     @user = User.find(params[:id])
-    @diaries = Diary.where(id: the_two_diaries(current_user, @user).pluck(:id)).order('created_at DESC')
+    @diaries = Diary.where(id: the_two_diaries(current_user, @user).pluck(:id)).order('created_at ASC')
   end
   
   private
@@ -70,7 +70,7 @@ class UsersController < ApplicationController
   end
   
   def the_two_diaries(sender, receiver)
-    sender.diaries.where(send_id: receiver.id) + receiver.diaries.where(send_id: sender.id).order('created_at DESC').page(params[:page])
+    sender.diaries.where(send_id: receiver.id) + receiver.diaries.where(send_id: sender.id).order('created_at ASC').page(params[:page])
   end
   
   def correct_user
