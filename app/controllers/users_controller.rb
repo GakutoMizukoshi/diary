@@ -12,8 +12,8 @@ class UsersController < ApplicationController
     @followers = @user.followers.page(params[:page])
     p followings_followers_ids = @user.followings.pluck(:id) + @user.followers.pluck(:id).group_by{|i| i}.reject{|k,v| v.one?}.keys
     @followings_followers = User.where(id: followings_followers_ids).page(params[:page])
-    @last_diary = Diary.where(id: the_two_diaries(current_user, @user).pluck(:id)).order('updated_at ASC').first
-    @diaries = Diary.where(id: the_two_diaries(current_user, @user).pluck(:id)).order('created_at ASC')
+    @last_diary = Diary.where(id: the_two_diaries(current_user, @user).pluck(:id)).order('updated_at DESC').first
+    @diaries = Diary.where(id: the_two_diaries(current_user, @user).pluck(:id)).order('created_at DESC')
   end
 
   def new
